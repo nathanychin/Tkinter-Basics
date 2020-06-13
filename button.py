@@ -3,7 +3,7 @@ from tkinter import *
 root = Tk()
 
 
-def onClick():
+def on_click():
     myLabel = Label(root, text="Button has been clicked")
     myLabel.pack()
 

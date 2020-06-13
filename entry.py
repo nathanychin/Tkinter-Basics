@@ -7,7 +7,7 @@ e.pack()
 e.insert(0, "Enter your name")  # Default text im form
 
 
-def onSubmit():
+def on_submit():
     hello = "Hello " + e.get()
     entryLabel = Label(root, text=hello)
     entryLabel.pack()
