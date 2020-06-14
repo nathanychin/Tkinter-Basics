@@ -20,6 +20,8 @@ def clear_entry():
 def on_click_add():
     first_number = e.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     e.delete(0, END)
 
@@ -27,7 +29,45 @@ def on_click_add():
 def on_click_equal():
     second_number = e.get()
     e.delete(0, END)
-    e.insert(0, f_num + int(second_number))
+
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+
+    if math == "subtraction":
+        e.insert(0, f_num - int(second_number))
+
+    if math == "multiplication":
+        e.insert(0, f_num * int(second_number))
+
+    if math == "division":
+        e.insert(0, f_num / int(second_number))
+
+
+def on_click_subtract():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+
+def on_click_multiply():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "multiplication"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+
+def on_click_divide():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    e.delete(0, END)
 
 
 # use lambda: if command function needs parameters
@@ -51,9 +91,17 @@ button_9 = Button(root, text="9", padx=40, pady=20,
                   command=lambda: on_click(9))
 button_0 = Button(root, text="0", padx=40, pady=20,
                   command=lambda: on_click(0))
+
 button_add = Button(root, text="+", padx=39, pady=20, command=on_click_add)
-button_equal = Button(root, text="=", padx=91, pady=20, command=on_click_equal)
-button_clear = Button(root, text="Clear", padx=91,
+button_subtract = Button(root, text="-", padx=40.25,
+                         pady=20, command=on_click_subtract)
+button_multiply = Button(root, text="*", padx=39,
+                         pady=20, command=on_click_multiply)
+button_divide = Button(root, text="/", padx=39,
+                       pady=20, command=on_click_divide)
+button_equal = Button(root, text="=", padx=86, pady=20, command=on_click_equal)
+
+button_clear = Button(root, text="Clear", padx=76,
                       pady=20, command=clear_entry)
 
 button_1.grid(row=3, column=0)
@@ -72,5 +120,10 @@ button_0.grid(row=4, column=0)
 button_clear.grid(row=4, column=1, columnspan=2)
 button_add.grid(row=5, column=0)
 button_equal.grid(row=5, column=1, columnspan=2)
+
+button_subtract.grid(row=6, column=0)
+button_multiply.grid(row=6, column=1)
+button_divide.grid(row=6, column=2)
+
 
 root.mainloop()
